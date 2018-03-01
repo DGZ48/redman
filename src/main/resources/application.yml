@@ -7,3 +7,10 @@ spring:
 #  output:
 #    ansi:
 #      enabled: ALWAYS
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: xxxx
+            client-secret: xxxx
