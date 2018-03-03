@@ -1,8 +1,6 @@
 package xyz.dgz48.redman.web;
 
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class LoginController {
-
-    /**
-     * Logger.
-     */
-    private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     /**
      * 認証後に表示するページ。最終的にリソースの一覧か何かになると思う.
