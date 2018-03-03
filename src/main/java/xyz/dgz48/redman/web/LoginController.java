@@ -1,18 +1,17 @@
 package xyz.dgz48.redman.web;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.Map;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-import java.util.Map;
 
+/**
+ * Controller for login
+ */
 @Controller
 public class LoginController {
 
@@ -20,8 +19,9 @@ public class LoginController {
 
     /**
      * 認証後に表示するページ。最終的にリソースの一覧か何かになると思う
+     *
      * @param authentication
-     * @return
+     * @return user info
      */
     @GetMapping("/")
     public Map<String, Object> index(OAuth2AuthenticationToken authentication) throws JsonProcessingException {
@@ -30,7 +30,8 @@ public class LoginController {
 
     /**
      * ログイン画面表示
-     * @return
+     *
+     * @return login page
      */
     @GetMapping("/login")
     public String viewLogin() {
