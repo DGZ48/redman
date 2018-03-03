@@ -5,13 +5,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * Configration about security
+ * Configuration about security.
  *
  * @since
  */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .anyRequest().authenticated()
