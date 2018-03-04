@@ -1,5 +1,6 @@
-package xyz.dgz48.redman.web.controller;
+package xyz.dgz48.redman.web;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  */
 @Controller
+@Profile("debug")
 public class DevelopmentController {
 
 	/**
