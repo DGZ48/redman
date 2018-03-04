@@ -1,16 +1,15 @@
 package xyz.dgz48.redman.web;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 /**
@@ -28,12 +27,11 @@ public class LoginControllerTest {
     private MockMvc mockMvc;
 
     /**
-     * Test for index page before login.(redirect to login page)
+     * Test for index page before login (redirect to login page).
      *
      * @throws Exception exception
      */
     @Test
-    @WithMockUser
     public void indexBeforeLogin() throws Exception {
         mockMvc.perform(get("/")).andExpect(status().is3xxRedirection());
     }
@@ -44,7 +42,7 @@ public class LoginControllerTest {
      * @throws Exception exception
      */
     @Test
-    @WithMockUser
+    @WithMockOAuth2User()
     public void indexAfterLogin() throws Exception {
         mockMvc.perform(get("/")).andExpect(status().isOk());
     }
