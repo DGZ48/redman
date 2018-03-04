@@ -25,13 +25,13 @@ public class DevelopmentController {
 	}
 
 	/**
-	 * path:/index.html.
+	 * path:/login.html.
 	 *
 	 * @param model モデル
 	 * @return テンプレートパス
 	 */
-	@GetMapping("/index.html")
+	@GetMapping("/login.html")
 	public String viewLoginForm(final Model model) {
-		return "/index";
+		return "/login";
 	}
 }
