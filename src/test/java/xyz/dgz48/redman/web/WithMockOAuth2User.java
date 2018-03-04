@@ -12,11 +12,11 @@ import org.springframework.security.test.context.support.WithSecurityContext;
 @WithSecurityContext(factory = WithOAuth2SecurityContextFactory.class)
 public @interface WithMockOAuth2User {
 
-    /**
-     * Username.
-     *
-     * @return username
-     */
-    String username() default "testuser";
+	/**
+	 * Username.
+	 *
+	 * @return username
+	 */
+	String username() default "testuser";
 
 }

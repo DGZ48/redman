@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 
-
 /**
  * Test for {@link LoginController}.
  */
@@ -22,41 +21,41 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 public class LoginControllerTest {
 
-    /**
-     * MockMvc.
-     */
-    @Autowired
-    private MockMvc mockMvc;
+	/**
+	 * MockMvc.
+	 */
+	@Autowired
+	private MockMvc mockMvc;
 
-    /**
-     * Test for index page before login (redirect to login page).
-     *
-     * @throws Exception exception
-     */
-    @Test
-    public void indexBeforeLogin() throws Exception { // NOPMD
-        mockMvc.perform(get("/")).andExpect(status().is3xxRedirection());
-    }
+	/**
+	 * Test for index page before login (redirect to login page).
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	public void indexBeforeLogin() throws Exception { // NOPMD
+		mockMvc.perform(get("/")).andExpect(status().is3xxRedirection());
+	}
 
-    /**
-     * Test for index page after login.
-     *
-     * @throws Exception exception
-     */
-    @Test
-    @WithMockOAuth2User()
-    public void indexAfterLogin() throws Exception { // NOPMD
-        mockMvc.perform(get("/")).andExpect(status().isOk());
-    }
+	/**
+	 * Test for index page after login.
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	@WithMockOAuth2User()
+	public void indexAfterLogin() throws Exception { // NOPMD
+		mockMvc.perform(get("/")).andExpect(status().isOk());
+	}
 
 
-    /**
-     * Test for login page.
-     *
-     * @throws Exception exception
-     */
-    @Test
-    public void viewLogin() throws Exception { // NOPMD
-        mockMvc.perform(get("/login")).andExpect(status().isOk());
-    }
+	/**
+	 * Test for login page.
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	public void viewLogin() throws Exception { // NOPMD
+		mockMvc.perform(get("/login")).andExpect(status().isOk());
+	}
 }

@@ -11,22 +11,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    /**
-     * コンストラクタ.<BR>
-     * <BR>
-     * checkstyle - HideUtilityClassConstructorを回避<BR>
-     * http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor#HideUtilityClassConstructor
-     */
-    protected Application() {
-        // nop
-    }
+	/**
+	 * コンストラクタ.<BR>
+	 * <BR>
+	 * checkstyle - HideUtilityClassConstructorを回避<BR>
+	 * http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor#HideUtilityClassConstructor
+	 */
+	protected Application() {
+		// nop
+	}
 
-    /**
-     * 実行エントリポイント.
-     *
-     * @param args 実行時引数
-     */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+	/**
+	 * 実行エントリポイント.
+	 *
+	 * @param args 実行時引数
+	 */
+	public static void main(final String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 }
