@@ -23,4 +23,15 @@ public class DevelopmentController {
 	public String viewStarter(final Model model) {
 		return "/starter";
 	}
+
+	/**
+	 * path:/index.html.
+	 *
+	 * @param model モデル
+	 * @return テンプレートパス
+	 */
+	@GetMapping("/index.html")
+	public String viewLoginForm(final Model model) {
+		return "/index";
+	}
 }
