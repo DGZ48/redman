@@ -24,14 +24,4 @@ public class DevelopmentController {
 		return "/starter";
 	}
 
-	/**
-	 * path:/login.html.
-	 *
-	 * @param model モデル
-	 * @return テンプレートパス
-	 */
-	@GetMapping("/login.html")
-	public String viewLoginForm(final Model model) {
-		return "/login";
-	}
 }
