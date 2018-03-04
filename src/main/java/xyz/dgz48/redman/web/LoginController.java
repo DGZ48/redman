@@ -4,8 +4,6 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Map;
-
 
 /**
  * Controller for login.
@@ -20,9 +18,8 @@ public class LoginController {
      * @return user info
      */
     @GetMapping("/")
-    public Map<String, Object> index(final OAuth2AuthenticationToken authentication) {
-        System.out.println("FUCK");
-        return authentication.getPrincipal().getAttributes();
+    public String index(final OAuth2AuthenticationToken authentication) {
+        return "index";
     }
 
     /**
@@ -32,6 +29,6 @@ public class LoginController {
      */
     @GetMapping("/login")
     public String viewLogin() {
-        return "forward:/index.html";
+        return "login";
     }
 }

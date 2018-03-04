@@ -13,7 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception { // NOPMD
+        // Define NOPMD because HttpSecurity$authorizeRequests throws Exception.
         http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and()

@@ -9,5 +9,5 @@ spring:
 #      enabled: ALWAYS
   security.oauth2.client.registration:
           google:
-            client-id: XXXX
-            client-secret: XXXX
+            client-id: xxxxx
+            client-secret: xxxxx

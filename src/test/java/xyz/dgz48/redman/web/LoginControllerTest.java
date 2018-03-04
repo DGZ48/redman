@@ -2,8 +2,10 @@ package xyz.dgz48.redman.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,7 +34,7 @@ public class LoginControllerTest {
      * @throws Exception exception
      */
     @Test
-    public void indexBeforeLogin() throws Exception {
+    public void indexBeforeLogin() throws Exception { // NOPMD
         mockMvc.perform(get("/")).andExpect(status().is3xxRedirection());
     }
 
@@ -43,7 +45,7 @@ public class LoginControllerTest {
      */
     @Test
     @WithMockOAuth2User()
-    public void indexAfterLogin() throws Exception {
+    public void indexAfterLogin() throws Exception { // NOPMD
         mockMvc.perform(get("/")).andExpect(status().isOk());
     }
 
@@ -54,7 +56,7 @@ public class LoginControllerTest {
      * @throws Exception exception
      */
     @Test
-    public void viewLogin() throws Exception {
+    public void viewLogin() throws Exception { // NOPMD
         mockMvc.perform(get("/login")).andExpect(status().isOk());
     }
 }

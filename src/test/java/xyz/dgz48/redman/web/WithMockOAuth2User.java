@@ -1,9 +1,9 @@
 package xyz.dgz48.redman.web;
 
-import org.springframework.security.test.context.support.WithSecurityContext;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import org.springframework.security.test.context.support.WithSecurityContext;
 
 /**
  * Annotation for test with OAuth2 Authentication.
@@ -14,7 +14,7 @@ public @interface WithMockOAuth2User {
 
     /**
      * Username.
-     * 
+     *
      * @return username
      */
     String username() default "testuser";

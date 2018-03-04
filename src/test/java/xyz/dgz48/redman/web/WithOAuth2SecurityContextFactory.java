@@ -1,5 +1,11 @@
 package xyz.dgz48.redman.web;
 
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -10,16 +16,10 @@ import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.test.context.support.WithSecurityContextFactory;
 
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 /**
  * OAuth2 token provider(put to {@SecurityContext} for integration test.
  */
-public class WithOAuth2SecurityContextFactory  implements WithSecurityContextFactory<WithMockOAuth2User>{
+public class WithOAuth2SecurityContextFactory implements WithSecurityContextFactory<WithMockOAuth2User> {
 
     /**
      * Create security context with OAuth2 token.
@@ -28,7 +28,7 @@ public class WithOAuth2SecurityContextFactory  implements WithSecurityContextFac
      * @return security context
      */
     @Override
-    public SecurityContext createSecurityContext(WithMockOAuth2User user) {
+    public SecurityContext createSecurityContext(final WithMockOAuth2User user) {
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         Map<String, Object> claims = new HashMap<>();
         claims.put("sub", "testsub");
@@ -36,8 +36,8 @@ public class WithOAuth2SecurityContextFactory  implements WithSecurityContextFac
         Set<GrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
-        OAuth2User oAuth2User = new DefaultOidcUser(authorities, new OidcIdToken("sampletoken", Instant.MIN, Instant.MAX, claims));
-        OAuth2AuthenticationToken token = new OAuth2AuthenticationToken(oAuth2User, authorities, "test-client");
+        OAuth2User oidcUser = new DefaultOidcUser(authorities, new OidcIdToken("sampletoken", Instant.MIN, Instant.MAX, claims));
+        OAuth2AuthenticationToken token = new OAuth2AuthenticationToken(oidcUser, authorities, "test-client");
         context.setAuthentication(token);
         return context;
     }
