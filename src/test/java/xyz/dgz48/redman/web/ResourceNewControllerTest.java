@@ -1,5 +1,6 @@
 package xyz.dgz48.redman.web;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -45,7 +46,7 @@ public class ResourceNewControllerTest {
 	@Test
 	@WithMockOAuth2User()
 	public void testValidate() throws Exception { // NOPMD
-		mockMvc.perform(post("/resource/new/input.html")).andExpect(status().is3xxRedirection());
+		mockMvc.perform(post("/resource/new/input.html").with(csrf())).andExpect(status().is3xxRedirection());
 	}
 
 	/**
@@ -67,7 +68,7 @@ public class ResourceNewControllerTest {
 	@Test
 	@WithMockOAuth2User()
 	public void testRegister() throws Exception { // NOPMD
-		mockMvc.perform(post("/resource/new/confirm.html")).andExpect(status().is3xxRedirection());
+		mockMvc.perform(post("/resource/new/confirm.html").with(csrf())).andExpect(status().is3xxRedirection());
 	}
 
 	/**
