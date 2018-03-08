@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -48,18 +44,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<input type="text" class="form-control input-lg" id="name" name="lastName" placeholder="わかりやすい名称を入力してください" />
 							</div>
 							<div class="form-group">
-								<label for="url">HTTPメソッド / URL</label>
-								<div class="input-group input-group-lg">
-									<div class="input-group-btn">
-										<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">メソッド <span class="fa fa-caret-down"></span></button>
-										<ul class="dropdown-menu">
-											<li><a href="#">GET</a></li>
-											<li><a href="#">POST</a></li>
-											<li><a href="#">PUT</a></li>
-											<li><a href="#">DELETE</a></li>
-										</ul>
+								<div class="row">
+									<div class="col-xs-2">
+										<label for="method">HTTPメソッド</label>
+										<select class="form-control input-lg" id="method" name="method">
+											<option>GET</option>
+											<option>POST</option>
+											<option>PUT</option>
+											<option>DELETE</option>
+										</select>
 									</div>
-									<input type="text" class="form-control" id="url" name="url" placeholder="https://redman.dgz48.xyz/api/action/1/send" />
+									<div class="col-xs-10">
+										<label for="url">URL</label>
+										<input type="text" class="form-control input-lg" id="url" name="url" placeholder="https://redman.dgz48.xyz/api/action/1/send">
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -80,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<input type="text" class="form-control input-lg" id="header[0].key" name="header[0].key" placeholder="Conetnt-Type">
 									</div>
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].value" name="header[0].value" placeholder="x-www-form-urlencoded">
+										<input type="text" class="form-control input-lg" id="header[0].value" name="header[0].value" placeholder="application/x-www-form-urlencoded">
 									</div>
 									<div class="col-xs-2">
 										<button type="button" name="delete" id="delete" class="btn btn-default btn-lg">削除</button>
