@@ -33,7 +33,7 @@ public class ResourceViewController {
 	 * @return テンプレートパス
 	 */
 	@GetMapping(path = "/resource/{id}/detail.html")
-	public String detail(final Model model, @PathVariable("id") final String id) {
+	public String viewDetail(final Model model, @PathVariable("id") final String id) {
 		return "/resource/detail";
 	}
 }

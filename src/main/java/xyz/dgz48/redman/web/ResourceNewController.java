@@ -3,8 +3,8 @@ package xyz.dgz48.redman.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * {@link Controller} for Resource create flow.
@@ -33,7 +33,7 @@ public class ResourceNewController {
 	 * @param model モデル
 	 * @return テンプレートパス
 	 */
-	@RequestMapping(path = "/input.html", method = RequestMethod.POST)
+	@PostMapping(path = "/input.html")
 	public String validate(final Model model) {
 		return "redirect:/resource/new/confirm.html";
 	}
@@ -44,8 +44,8 @@ public class ResourceNewController {
 	 * @param model モデル
 	 * @return テンプレートパス
 	 */
-	@RequestMapping(path = "/confirm.html", method = RequestMethod.GET)
-	public String confirm(final Model model) {
+	@GetMapping(path = "/confirm.html")
+	public String viewConfirm(final Model model) {
 		return "/resource/new/confirm";
 	}
 
@@ -55,7 +55,7 @@ public class ResourceNewController {
 	 * @param model モデル
 	 * @return テンプレートパス
 	 */
-	@RequestMapping(path = "/confirm.html", method = RequestMethod.POST)
+	@PostMapping(path = "/confirm.html")
 	public String register(final Model model) {
 		return "redirect:/resource/new/complete.html";
 	}
@@ -66,8 +66,8 @@ public class ResourceNewController {
 	 * @param model モデル
 	 * @return テンプレートパス
 	 */
-	@RequestMapping(path = "/complete.html", method = RequestMethod.GET)
-	public String complete(final Model model) {
+	@GetMapping(path = "/complete.html")
+	public String viewComplete(final Model model) {
 		return "/resource/new/complete";
 	}
 }
