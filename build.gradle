@@ -32,6 +32,7 @@ group = groupId
 version = implementationVersion
 sourceCompatibility = compatibility
 targetCompatibility = compatibility
+mainClassName = 'xyz.dgz48.redman.Application'
 
 repositories {
 	mavenCentral()
@@ -74,7 +75,6 @@ compileTestJava {
 }
 
 bootJar {
-	mainClassName = 'xyz.dgz48.redman.Application'
 	manifest {
 		attributes 'Start-Class': 'xyz.dgz48.redman.Application'
 		attributes 'Implementation-Title': artifactId
@@ -84,12 +84,6 @@ bootJar {
 		attributes 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
 	}
 	launchScript()
-}
-
-distributions {
-	boot {
-		baseName = artifactId
-	}
 }
 
 jacocoTestReport {
