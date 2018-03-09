@@ -26,6 +26,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
 apply plugin: 'jdepend'
+apply plugin: 'application'
 
 group = groupId
 version = implementationVersion
@@ -83,6 +84,12 @@ bootJar {
 		attributes 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
 	}
 	launchScript()
+}
+
+distributions {
+	boot {
+		baseName = artifactId
+	}
 }
 
 jacocoTestReport {
