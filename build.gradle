@@ -46,7 +46,6 @@ dependencyManagement {
 	}
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -91,6 +90,10 @@ distributions {
 		baseName = artifactId
 	}
 }
+
+startScripts.enabled = false
+distTar.enabled = false
+distZip.enabled = false
 
 jacocoTestReport {
 	reports {
