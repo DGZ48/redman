@@ -29,6 +29,7 @@ apply plugin: 'jdepend'
 apply plugin: 'application'
 
 group = groupId
+name = artifactId
 version = implementationVersion
 sourceCompatibility = compatibility
 targetCompatibility = compatibility
