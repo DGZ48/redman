@@ -29,7 +29,6 @@ apply plugin: 'jdepend'
 apply plugin: 'application'
 
 group = groupId
-name = artifactId
 version = implementationVersion
 sourceCompatibility = compatibility
 targetCompatibility = compatibility
@@ -85,6 +84,12 @@ bootJar {
 		attributes 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
 	}
 	launchScript()
+}
+
+distributions {
+	boot {
+		baseName = artifactId
+	}
 }
 
 jacocoTestReport {
