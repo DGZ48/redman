@@ -10,8 +10,10 @@ jobs:
       - checkout
       - run: chmod +x ./gradlew # Grant execution permission
       - run: ./gradlew --quiet javadoc build
+      - run: mkdir build/artifacts
+      - run: for file in $(find build/distributions -name redman-boot-*); do cp -ip ${file} build/artifacts ; done
       - store_artifacts:
-          path: build/distributions/redman-boot-*.zip
+          path: build/artifacts
       - store_artifacts:
           path: build/docs
       - store_artifacts:
