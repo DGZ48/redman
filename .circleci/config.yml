@@ -24,12 +24,13 @@ jobs:
           path: build/test-results
   deploy: 
     docker:
-      - image: circleci/python:3.6.4-jessie-browsers
+      - image: java:openjdk-8-jdk
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
     steps: 
       - restore_cache: 
           keys: redman
+      - run: apt-get install python-pip
       - run: pip install awscli --upgrade --user
       - run: aws s3 sync public build s3://dgz48-redman-dev-ci/ --delete
 workflows:
