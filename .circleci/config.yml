@@ -30,8 +30,8 @@ jobs:
     steps: 
       - restore_cache: 
           keys: redman
-      - run: apt-get install software-properties-common
-      - run: apt-add-repository universe
+#      - run: apt-get install software-properties-common
+#      - run: apt-add-repository universe
       - run: apt-get update
       - run: apt-get install python-pip
       - run: pip install awscli --upgrade --user
