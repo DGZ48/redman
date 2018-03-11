@@ -30,6 +30,11 @@ jobs:
     steps: 
       - restore_cache: 
           keys: redman
+      - run: apt-get -y -qq update
+      - run: apt-get -y -qq install python3.4-dev
+      - run: curl -O https://bootstrap.pypa.io/get-pip.py
+      - run: python3.4 get-pip.py --user
+      - run: pip install awscli --upgrade --user
       - run: aws s3 sync public build s3://dgz48-redman-dev-ci/ --delete
 workflows:
   version: 2
