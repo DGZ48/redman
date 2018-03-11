@@ -1,7 +1,7 @@
 version: 2
 ## Customize the test machine
 jobs:
-  test:
+  build:
     docker:
       - image: java:openjdk-8-jdk
         environment:
@@ -10,6 +10,10 @@ jobs:
       - checkout
       - run: chmod +x ./gradlew # Grant execution permission
       - run: ./gradlew --quiet javadoc build
+      - save_cache: 
+          key: redman-{{ epoch }}
+          paths: 
+            - build
       - store_artifacts:
           path: build/distributions
       - store_artifacts:
@@ -18,8 +22,23 @@ jobs:
           path: build/reports
       - store_test_results:
           path: build/test-results
+  deploy: 
+    docker:
+      - image: java:openjdk-8-jdk
+        environment:
+          TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+    steps: 
+      - restore_cache: 
+          keys: redman
+      - run: aws s3 sync public build s3://dgz48-redman-dev-ci/ --delete
 workflows:
   version: 2
-  build_and_test:
+  build_and_deploy:
     jobs:
-      - test
+      - build 
+      - deploy: 
+          requires: 
+            - build 
+          filters: 
+            branches: 
+              only: feature_ci-deploy
