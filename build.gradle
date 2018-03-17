@@ -26,13 +26,11 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
 apply plugin: 'jdepend'
-apply plugin: 'application'
 
 group = groupId
 version = implementationVersion
 sourceCompatibility = compatibility
 targetCompatibility = compatibility
-mainClassName = 'xyz.dgz48.redman.Application'
 
 repositories {
 	mavenCentral()
@@ -74,6 +72,7 @@ compileTestJava {
 }
 
 bootJar {
+	mainClassName = 'xyz.dgz48.redman.Application'
 	manifest {
 		attributes 'Start-Class': 'xyz.dgz48.redman.Application'
 		attributes 'Implementation-Title': artifactId
@@ -85,15 +84,13 @@ bootJar {
 	launchScript()
 }
 
-distributions {
-	boot {
-		baseName = artifactId
-	}
+task createCodeDeployArchive(type: Zip, dependsOn: bootJar) {
+	from "${project.buildDir}/libs/"
+	from 'src/main/codedeploy/'
+	archiveName artifactId + '-codedeploy.zip'
+	destinationDir file("${project.buildDir}/distributions")
 }
-
-startScripts.enabled = false
-distTar.enabled = false
-distZip.enabled = false
+build.dependsOn createCodeDeployArchive
 
 jacocoTestReport {
 	reports {
