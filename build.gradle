@@ -72,6 +72,7 @@ compileTestJava {
 }
 
 bootJar {
+	archiveName = artifactId + '.jar'
 	mainClassName = 'xyz.dgz48.redman.Application'
 	manifest {
 		attributes 'Start-Class': 'xyz.dgz48.redman.Application'

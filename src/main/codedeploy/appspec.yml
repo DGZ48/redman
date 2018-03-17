@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: redman-1.0.0.SNAPSHOT.jar
+  - source: redman.jar
     destination: /opt/redman/lib/
 hooks:
   BeforeInstall:
