@@ -1,2 +1,15 @@
 version: 0.0
 os: linux
+files:
+  - source: redman-1.0.0.SNAPSHOT.jar
+    destination: /opt/redman/lib/
+    overwrite: yes
+hooks:
+  ApplicationStop:
+    - location: scripts/appstop.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/appstart.sh
+      timeout: 300
+      runas: root
