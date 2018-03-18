@@ -36,7 +36,7 @@ public class UserInfoControllerAdvice {
 	 * @param model model
 	 */
 	@ModelAttribute
-	public void globalAttributes(final Model model) {
+	public void userInfoAttributes(final Model model) {
 		SecurityContextHolder.getContext();
 		Authentication authentication = SecurityContextHolder.getContext()
 				.getAuthentication();
