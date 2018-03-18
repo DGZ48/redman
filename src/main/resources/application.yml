@@ -13,3 +13,10 @@ spring:
           google:
             client-id: xxxxx
             client-secret: xxxxx
+management.endpoints:
+    jmx.exposure:
+        include: '*'
+        exclude: shutdown
+    web.exposure:
+        include: '*'
+        exclude: shutdown

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rm -rf /opt/redman/lib/*
+rm -f /opt/redman/redman.jar
