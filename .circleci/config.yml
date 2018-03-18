@@ -52,4 +52,4 @@ workflows:
             - build 
           filters: 
             branches: 
-              only: feature_ci-deploy
+              only: master
