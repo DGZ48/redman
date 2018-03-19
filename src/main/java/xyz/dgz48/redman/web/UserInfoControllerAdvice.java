@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationToken;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,6 +52,18 @@ public class UserInfoControllerAdvice {
 		if (!(authentication instanceof OAuth2AuthenticationToken)) {
 			log.debug("Authentication is not Outh2AuthenticationToken.");
 		 	return;
+		}
+
+		if(authentication instanceof OAuth2LoginAuthenticationToken) {
+			OAuth2LoginAuthenticationToken oAuth2LoginAuthenticationToken = (OAuth2LoginAuthenticationToken) authentication;
+			OAuth2AuthorizationRequest authorizationRequest = oAuth2LoginAuthenticationToken.getAuthorizationExchange().getAuthorizationRequest();
+			OAuth2AuthorizationResponse authorizationResponse = oAuth2LoginAuthenticationToken.getAuthorizationExchange().getAuthorizationResponse();
+
+			String requestURI = authorizationRequest.getRedirectUri();
+			String responseURI = authorizationResponse.getRedirectUri();
+
+			log.info("REQUEST URI:{}", requestURI);
+			log.info("RESPONSE URI:{}", responseURI);
 		}
 
 		OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
