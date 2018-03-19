@@ -46,14 +46,6 @@ public class UserInfoControllerAdvice {
 
 		log.debug("Invoke UserInfoControllerAdvice.");
 
-
-		// when implement login by redman as idp, implement for other type of Authentication.
-		log.debug("Get authentication.");
-		if (!(authentication instanceof OAuth2AuthenticationToken)) {
-			log.debug("Authentication is not Outh2AuthenticationToken.");
-		 	return;
-		}
-
 		if(authentication instanceof OAuth2LoginAuthenticationToken) {
 			OAuth2LoginAuthenticationToken oAuth2LoginAuthenticationToken = (OAuth2LoginAuthenticationToken) authentication;
 			OAuth2AuthorizationRequest authorizationRequest = oAuth2LoginAuthenticationToken.getAuthorizationExchange().getAuthorizationRequest();
@@ -64,6 +56,13 @@ public class UserInfoControllerAdvice {
 
 			log.info("REQUEST URI:{}", requestURI);
 			log.info("RESPONSE URI:{}", responseURI);
+		}
+
+		// when implement login by redman as idp, implement for other type of Authentication.
+		log.debug("Get authentication.");
+		if (!(authentication instanceof OAuth2AuthenticationToken)) {
+			log.debug("Authentication is not Outh2AuthenticationToken.");
+		 	return;
 		}
 
 		OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
