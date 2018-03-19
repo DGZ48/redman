@@ -115,10 +115,6 @@ tasks.withType(Pmd) {
 	}
 }
 
-jdepend {
-	ignoreFailures = false // エラー、警告でビルド停止
-}
-
 javadoc {
 	options.encoding = defaultEncoding
 	options.charSet = defaultEncoding
