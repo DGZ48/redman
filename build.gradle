@@ -70,9 +70,6 @@ compileTestJava {
 	options.encoding = defaultEncoding
 }
 
-jacoco {
-	toolVersion = "0.8.0"
-}
 
 bootJar {
 	archiveName = artifactId + '.jar'
@@ -96,38 +93,6 @@ task createCodeDeployArchive(type: Zip, dependsOn: bootJar) {
 }
 build.dependsOn createCodeDeployArchive
 
-jacocoTestReport {
-	reports {
-		xml.enabled false
-		csv.enabled false
-		html.enabled true
-		//html.destination file("${buildDir}/jacocoHtml")
-	}
-}
-check.dependsOn jacocoTestReport
-
-jacocoTestCoverageVerification {
-	violationRules {
-		rule {
-			element = 'CLASS'
-			excludes = ['**.Application']
-			limit {
-				counter = 'INSTRUCTION'
-				minimum = 1.0
-			}
-		}
-	}
-}
-check.dependsOn jacocoTestCoverageVerification
-
-checkstyle {
-	configFile = file("${project.rootDir}/checkstyle/checkstyle.xml")
-	ignoreFailures = false // エラー、警告でビルド停止
-	maxErrors = 0 // エラーを１つも許さない
-	maxWarnings = 0 // 警告を１つも許さない
-	showViolations = true
-}
-
 tasks.withType(Checkstyle) {
 	reports {
 		xml.enabled = false
@@ -135,26 +100,12 @@ tasks.withType(Checkstyle) {
 	}
 }
 
-findbugs {
-	effort = 'max' // どのぐらい頑張るか[min|default|max]
-	ignoreFailures = false // エラー、警告でビルド停止
-	reportLevel = 'low' // どのぐらい細かいやつを問題視するか[low|medium|high]
-	showProgress = false
-}
 
 tasks.withType(FindBugs) {
 	reports {
 		xml.enabled = false
 		html.enabled = true
 	}
-}
-
-pmd {
-	consoleOutput = false
-	ignoreFailures = false
-	rulePriority = 5
-	ruleSetFiles = files("${project.rootDir}/pmd/java.xml")
-	ruleSets = []  // To apply only the custom rules
 }
 
 tasks.withType(Pmd) {
