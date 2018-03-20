@@ -44,7 +44,13 @@ public class UserInfoControllerAdvice {
 		Authentication authentication = SecurityContextHolder.getContext()
 				.getAuthentication();
 
+		if(authentication == null){
+			log.info("authentication is null.");
+			return;
+		}
+
 		log.debug("Invoke UserInfoControllerAdvice.");
+		log.info(authentication.toString());
 
 		if(authentication instanceof OAuth2LoginAuthenticationToken) {
 			OAuth2LoginAuthenticationToken oAuth2LoginAuthenticationToken = (OAuth2LoginAuthenticationToken) authentication;
@@ -56,6 +62,8 @@ public class UserInfoControllerAdvice {
 
 			log.info("REQUEST URI:{}", requestURI);
 			log.info("RESPONSE URI:{}", responseURI);
+		}else {
+			log.info("its not OAuth2LoginAuthenticationToken.");
 		}
 
 		// when implement login by redman as idp, implement for other type of Authentication.
