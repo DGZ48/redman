@@ -1,11 +1,9 @@
 package xyz.dgz48.redman.web;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import lombok.extern.slf4j.Slf4j;
-
 
 /**
  * Controller for login.

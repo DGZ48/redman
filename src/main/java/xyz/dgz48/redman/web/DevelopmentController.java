@@ -1,11 +1,10 @@
 package xyz.dgz48.redman.web;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 開発者目的の{@link Controller}.
@@ -26,6 +25,7 @@ public class DevelopmentController {
 	 */
 	@GetMapping("/starter.html")
 	public String viewStarter(final Model model) {
+		log.debug("View /starter.html");
 		return "starter";
 	}
 
