@@ -1,11 +1,12 @@
 package xyz.dgz48.redman.web;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * {@link Controller} for Resource create flow.
@@ -26,7 +27,7 @@ public class ResourceNewController {
 	 */
 	@GetMapping("/input.html")
 	public String viewInput(final Model model) {
-		return "/resource/new/input";
+		return "resource/new/input";
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class ResourceNewController {
 	 */
 	@GetMapping(path = "/confirm.html")
 	public String viewConfirm(final Model model) {
-		return "/resource/new/confirm";
+		return "resource/new/confirm";
 	}
 
 	/**
@@ -70,6 +71,6 @@ public class ResourceNewController {
 	 */
 	@GetMapping(path = "/complete.html")
 	public String viewComplete(final Model model) {
-		return "/resource/new/complete";
+		return "resource/new/complete";
 	}
 }
