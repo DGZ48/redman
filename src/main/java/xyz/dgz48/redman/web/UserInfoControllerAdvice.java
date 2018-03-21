@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationToken;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,8 +44,27 @@ public class UserInfoControllerAdvice {
 		Authentication authentication = SecurityContextHolder.getContext()
 				.getAuthentication();
 
-		log.debug("Invoke UserInfoControllerAdvice.");
+		if(authentication == null){
+			log.info("authentication is null.");
+			return;
+		}
 
+		log.debug("Invoke UserInfoControllerAdvice.");
+		log.info(authentication.toString());
+
+		if(authentication instanceof OAuth2LoginAuthenticationToken) {
+			OAuth2LoginAuthenticationToken oAuth2LoginAuthenticationToken = (OAuth2LoginAuthenticationToken) authentication;
+			OAuth2AuthorizationRequest authorizationRequest = oAuth2LoginAuthenticationToken.getAuthorizationExchange().getAuthorizationRequest();
+			OAuth2AuthorizationResponse authorizationResponse = oAuth2LoginAuthenticationToken.getAuthorizationExchange().getAuthorizationResponse();
+
+			String requestURI = authorizationRequest.getRedirectUri();
+			String responseURI = authorizationResponse.getRedirectUri();
+
+			log.info("REQUEST URI:{}", requestURI);
+			log.info("RESPONSE URI:{}", responseURI);
+		}else {
+			log.info("its not OAuth2LoginAuthenticationToken.");
+		}
 
 		// when implement login by redman as idp, implement for other type of Authentication.
 		log.debug("Get authentication.");
