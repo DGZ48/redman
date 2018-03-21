@@ -52,4 +52,4 @@ workflows:
             - build 
           filters: 
             branches: 
-              only: remove-prefix-branch-for-template
+              only: master
