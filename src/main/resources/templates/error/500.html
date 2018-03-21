@@ -18,6 +18,8 @@
 
 	<!--/* Main content */-->
 	<section layout:fragment="main-content">
+		<div class="row">
+			<div class="col-xs-12">
 				<div class="error-page">
 					<h2 class="headline text-red">500</h2>
 
@@ -32,6 +34,23 @@
 
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<div class="row mgt20" th:if="${trace}">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title" th:text="${status} + ' ' + ${error} + '  [ ' + ${timestamp} + ' ]'">StackTrace</h3>
+					</div>
+					<div class="box-body">
+						<pre th:text="${trace}">Start creating your amazing application!</pre>
+					</div>
+					<div class="box-footer">Please fix this error...</div>
+				</div>
+			</div>
+		</div>
+
 	</section>
 </body>
 </html>
