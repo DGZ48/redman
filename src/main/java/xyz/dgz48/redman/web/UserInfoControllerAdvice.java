@@ -35,6 +35,9 @@ public class UserInfoControllerAdvice {
 	@Autowired
 	private UserFactory userFactory;
 
+	@Autowired
+	UserInfoExtractor userInfoExtractor;
+
 	/**
 	 * UserInfoExtractor for GitHub.
 	 */
@@ -75,6 +78,7 @@ public class UserInfoControllerAdvice {
 		UserInfoExtractor userInfoExtractor = getUserInfoExtractor(idpType);
 		User user = userByIdpUserName.orElseGet(() -> userService.saveUser(userFactory.createWithRandomId(authentication.getName(),
 				userInfoExtractor.getEmail(token), idpType)));
+<<<<<<< HEAD
 
 		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
 	}
@@ -92,5 +96,9 @@ public class UserInfoControllerAdvice {
 			log.info("★★★★★★★★★★");
 			return googleUserInfoExtractor;
 		}
+=======
+
+		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
+>>>>>>> wip
 	}
 }
