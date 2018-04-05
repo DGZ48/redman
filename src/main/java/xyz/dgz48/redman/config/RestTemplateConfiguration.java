@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Configuration for {@link RestTemplate}
+ * Configuration for {@link RestTemplate}.
  */
 @Configuration
 public class RestTemplateConfiguration {

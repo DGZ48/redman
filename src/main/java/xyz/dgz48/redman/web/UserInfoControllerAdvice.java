@@ -35,11 +35,17 @@ public class UserInfoControllerAdvice {
 	@Autowired
 	private UserFactory userFactory;
 
+	/**
+	 * UserInfoExtractor for GitHub.
+	 */
 	@Autowired
-	GitHubUserInfoExtractor gitHubUserInfoExtractor;
+	private GitHubUserInfoExtractor gitHubUserInfoExtractor;
 
+	/**
+	 * UserInfoExtractor for Google.
+	 */
 	@Autowired
-	GoogleUserInfoExtractor googleUserInfoExtractor;
+	private GoogleUserInfoExtractor googleUserInfoExtractor;
 
 	/**
 	 * Create {@link UserInfo} and set to model.
@@ -72,12 +78,17 @@ public class UserInfoControllerAdvice {
 		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
 	}
 
-	private UserInfoExtractor getUserInfoExtractor (IdpType idpType) {
-		if(idpType == IdpType.GITHUB) {
+	/**
+	 * Get UserInfoExtractor.
+	 * @param idpType idpType
+	 * @return UserInfoExtractor
+	 */
+	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
+		if (idpType == IdpType.GITHUB) {
 			return gitHubUserInfoExtractor;
 		}
 
-		if(idpType == IdpType.GOOGLE) {
+		if (idpType == IdpType.GOOGLE) {
 			return googleUserInfoExtractor;
 		}
 
