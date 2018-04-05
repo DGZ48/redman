@@ -10,22 +10,17 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.test.context.junit4.SpringRunner;
 
 
 /**
  * Test for {@link UserInfoExtractor}.
  */
-@SpringBootTest
-@RunWith(SpringRunner.class)
 public class GoogleUserInfoExtractorTest {
 
 	/**
