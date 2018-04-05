@@ -44,14 +44,23 @@ public class GItHubUserInfoExtractorTest {
 	 */
 	private final Map<String, Object> userInfo = new HashMap<>();
 
+	/**
+	 * test target.
+	 */
 	@Autowired
-	GitHubUserInfoExtractor sut;
+	private GitHubUserInfoExtractor sut;
 
+	/**
+	 * restTemplate.
+	 */
 	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 
+	/**
+	 * authorizedClientService.
+	 */
 	@Autowired
-	OAuth2AuthorizedClientService authorizedClientService;
+	private OAuth2AuthorizedClientService authorizedClientService;
 
 	/**
 	 * Init.
@@ -71,7 +80,8 @@ public class GItHubUserInfoExtractorTest {
 		// prepare mock for rest template
 		MockRestServiceServer mockServer = MockRestServiceServer.bindTo(restTemplate).build();
 		mockServer.expect(requestTo("https://api.github.com/user/emails"))
-				.andRespond(withSuccess("[{\"email\":\"test@example.com\", \"verified\":true, \"primary\":true, \"visibility\":\"true\"}]", MediaType.APPLICATION_JSON_UTF8));
+				.andRespond(withSuccess("[{\"email\":\"test@example.com\", \"verified\":true, \"primary\":true, \"visibility\":\"true\"}]",
+						MediaType.APPLICATION_JSON_UTF8));
 
 		// prepare token
 		Set<GrantedAuthority> authorities = new HashSet<>();
@@ -80,10 +90,14 @@ public class GItHubUserInfoExtractorTest {
 		OAuth2AuthenticationToken token = new OAuth2AuthenticationToken(oidcUser, authorities, "github");
 
 		// register authorized client for using token by RestTemplate.
-		ClientRegistration registration = CommonOAuth2Provider.GITHUB.getBuilder("github").clientId("id").clientSecret("secret").build();
-		OAuth2AuthorizedClient oAuth2AuthorizedClient = new OAuth2AuthorizedClient(registration, "testsub", new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER,"sampletoken" ,Instant.MIN, Instant.MAX));
+		ClientRegistration registration = CommonOAuth2Provider.GITHUB
+				.getBuilder("github").clientId("id").clientSecret("secret").build();
+		OAuth2AuthorizedClient authorizedClient =
+				new OAuth2AuthorizedClient(registration, "testsub",
+						new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER,
+								"sampletoken", Instant.MIN, Instant.MAX));
 
-		authorizedClientService.saveAuthorizedClient(oAuth2AuthorizedClient, token);
+		authorizedClientService.saveAuthorizedClient(authorizedClient, token);
 
 		// exercise
 		String actual = sut.getEmail(token);
@@ -99,8 +113,6 @@ public class GItHubUserInfoExtractorTest {
 	@Test
 	public void extractPictureUrlByGitHub() {
 		// set up
-		UserInfoExtractor sut = new GitHubUserInfoExtractor();
-
 		Set<GrantedAuthority> authorities = new HashSet<>();
 		authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 

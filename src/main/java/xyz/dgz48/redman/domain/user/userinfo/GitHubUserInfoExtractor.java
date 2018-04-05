@@ -91,7 +91,7 @@ public class GitHubUserInfoExtractor implements UserInfoExtractor {
 	}
 
 	/**
-	 * {@link IdpType}に合わせた方法でユーザの画像URLを抽出する.
+	 * ユーザの画像URLを抽出する.
 	 *
 	 * @param authenticationToken token
 	 * @return 画像のURL
