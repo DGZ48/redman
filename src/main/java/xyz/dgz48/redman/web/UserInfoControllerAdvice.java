@@ -10,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import xyz.dgz48.redman.domain.user.*;
+import xyz.dgz48.redman.domain.user.userinfo.GitHubUserInfoExtractor;
+import xyz.dgz48.redman.domain.user.userinfo.GoogleUserInfoExtractor;
+import xyz.dgz48.redman.domain.user.userinfo.UserInfo;
+import xyz.dgz48.redman.domain.user.userinfo.UserInfoExtractor;
 
 
 /**
@@ -32,7 +36,10 @@ public class UserInfoControllerAdvice {
 	private UserFactory userFactory;
 
 	@Autowired
-	UserInfoExtractor userInfoExtractor;
+	GitHubUserInfoExtractor gitHubUserInfoExtractor;
+
+	@Autowired
+	GoogleUserInfoExtractor googleUserInfoExtractor;
 
 	/**
 	 * Create {@link UserInfo} and set to model.
@@ -58,9 +65,22 @@ public class UserInfoControllerAdvice {
 		IdpType idpType = IdpType.findByClientRegistrationId(token.getAuthorizedClientRegistrationId());
 
 		Optional<User> userByIdpUserName = userService.findUserByIdpUserName(token.getName(), idpType);
+		UserInfoExtractor userInfoExtractor = getUserInfoExtractor(idpType);
 		User user = userByIdpUserName.orElseGet(() -> userService.saveUser(userFactory.createWithRandomId(authentication.getName(),
 				userInfoExtractor.getEmail(token), idpType)));
 
 		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
+	}
+
+	private UserInfoExtractor getUserInfoExtractor (IdpType idpType) {
+		if(idpType == IdpType.GITHUB) {
+			return gitHubUserInfoExtractor;
+		}
+
+		if(idpType == IdpType.GOOGLE) {
+			return googleUserInfoExtractor;
+		}
+
+		throw new UnsupportedOperationException("null is not implemented idp.");
 	}
 }

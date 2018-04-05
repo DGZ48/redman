@@ -1,4 +1,4 @@
-package xyz.dgz48.redman.domain.user;
+package xyz.dgz48.redman.domain.user.userinfo;
 
 import java.io.Serializable;
 import lombok.Value;

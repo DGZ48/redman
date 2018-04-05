@@ -1,4 +1,4 @@
-package xyz.dgz48.redman.domain.user;
+package xyz.dgz48.redman.domain.user.userinfo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import xyz.dgz48.redman.domain.user.IdpType;
+import xyz.dgz48.redman.domain.user.userinfo.UserInfoExtractor;
 
 
 /**
