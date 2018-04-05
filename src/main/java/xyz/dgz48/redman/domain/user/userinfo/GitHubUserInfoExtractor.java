@@ -11,6 +11,7 @@ import org.springframework.http.*;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 >>>>>>> implements UserInfoExtractor for each idp
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
@@ -23,7 +24,11 @@ import org.springframework.web.client.RestTemplate;
 import xyz.dgz48.redman.domain.user.IdpType;
 
 import java.util.Arrays;
+<<<<<<< HEAD
 >>>>>>> implements UserInfoExtractor for each idp
+=======
+import java.util.Collections;
+>>>>>>> test for GitHub
 
 /**
  * GitHubから取得できるユーザ情報を正規化するクラス.
@@ -76,6 +81,9 @@ public class GitHubUserInfoExtractor implements UserInfoExtractor{
 	@Autowired
 	private OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
 
+	@Autowired
+	RestTemplate restTemplate;
+
 	/**
 	 * {@link IdpType}に合わせた方法でメールアドレスを抽出する.
 	 *
@@ -84,19 +92,30 @@ public class GitHubUserInfoExtractor implements UserInfoExtractor{
 	 */
 	public String getEmail(final OAuth2AuthenticationToken oAuth2AuthenticationToken) {
 
+		log.debug("ClientRegistrationId:{}", oAuth2AuthenticationToken.getAuthorizedClientRegistrationId());
+		log.debug("Name:{}", oAuth2AuthenticationToken.getName());
+
 		OAuth2AuthorizedClient client =
 				oAuth2AuthorizedClientService.loadAuthorizedClient(
 						oAuth2AuthenticationToken.getAuthorizedClientRegistrationId(),
 						oAuth2AuthenticationToken.getName());
 
 		String accessToken = client.getAccessToken().getTokenValue();
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getInterceptors()
-				.add(getBearerTokenInterceptor(accessToken));
 
+<<<<<<< HEAD
 		GitHubEmail[] forObject = restTemplate.getForObject("https://api.github.com/user/emails", GitHubEmail[].class);
 		return Arrays.stream(forObject).filter(o -> o.isPrimary()).findFirst().get().getEmail();
 >>>>>>> implements UserInfoExtractor for each idp
+=======
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Bearer " + accessToken);
+
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		ResponseEntity<GitHubEmail[]> forObject = restTemplate.exchange("https://api.github.com/user/emails", HttpMethod.GET, entity, GitHubEmail[].class);
+
+//		GitHubEmail[] forObject = restTemplate.getForObject("https://api.github.com/user/emails", entity, GitHubEmail[].class);
+		return Arrays.stream(forObject.getBody()).filter(o -> o.isPrimary()).findFirst().get().getEmail();
+>>>>>>> test for GitHub
 	}
 
 	/**
@@ -132,6 +151,7 @@ public class GitHubUserInfoExtractor implements UserInfoExtractor{
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/**
 	 * ユーザの画像URLを抽出する.
 	 *
@@ -150,6 +170,8 @@ public class GitHubUserInfoExtractor implements UserInfoExtractor{
 		return interceptor;
 	}
 
+=======
+>>>>>>> test for GitHub
 	/**
 	 * {@link IdpType}に合わせた方法でユーザの画像URLを抽出する.
 	 *

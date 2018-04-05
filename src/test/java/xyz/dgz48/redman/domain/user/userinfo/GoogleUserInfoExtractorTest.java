@@ -12,6 +12,7 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+<<<<<<< HEAD
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -31,12 +32,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+=======
+>>>>>>> test for GitHub
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+<<<<<<< HEAD
 import org.springframework.test.context.junit4.SpringRunner;
 <<<<<<< HEAD
 import xyz.dgz48.redman.domain.user.IdpType;
@@ -44,11 +48,14 @@ import xyz.dgz48.redman.domain.user.userinfo.UserInfoExtractor;
 >>>>>>> implements UserInfoExtractor for each idp
 =======
 >>>>>>> test for GooleUserInfoExtractor
+=======
+>>>>>>> test for GitHub
 
 
 /**
  * Test for {@link UserInfoExtractor}.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 public class GoogleUserInfoExtractorTest {
 =======
@@ -58,6 +65,8 @@ public class GoogleUserInfoExtractorTest {
 public class UserInfoExtractorTest {
 >>>>>>> implements UserInfoExtractor for each idp
 =======
+=======
+>>>>>>> test for GitHub
 public class GoogleUserInfoExtractorTest {
 >>>>>>> test for GooleUserInfoExtractor
 

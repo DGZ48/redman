@@ -5,7 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
+<<<<<<< HEAD
  * Configuration for {@link RestTemplate}.
+=======
+ * Configuration for {@link RestTemplate}
+>>>>>>> test for GitHub
  */
 @Configuration
 public class RestTemplateConfiguration {
