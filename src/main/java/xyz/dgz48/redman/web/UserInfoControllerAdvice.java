@@ -36,7 +36,10 @@ public class UserInfoControllerAdvice {
 	private UserFactory userFactory;
 
 	@Autowired
-	UserInfoExtractor userInfoExtractor;
+	GitHubUserInfoExtractor gitHubUserInfoExtractor;
+
+	@Autowired
+	GoogleUserInfoExtractor googleUserInfoExtractor;
 
 	/**
 	 * UserInfoExtractor for GitHub.
@@ -100,5 +103,17 @@ public class UserInfoControllerAdvice {
 
 		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
 >>>>>>> wip
+	}
+
+	private UserInfoExtractor getUserInfoExtractor (IdpType idpType) {
+		if(idpType == IdpType.GITHUB) {
+			return gitHubUserInfoExtractor;
+		}
+
+		if(idpType == IdpType.GOOGLE) {
+			return googleUserInfoExtractor;
+		}
+
+		throw new UnsupportedOperationException("null is not implemented idp.");
 	}
 }

@@ -25,8 +25,8 @@ spring:
       client-id: xxxxx
       client-secret: xxxxx
     github:
-      client-id: xxxxx
-      client-secret: xxxxx
+      client-id: d158cfae2e8af3a9c152
+      client-secret: 2525d98a71114a6037650de5530c41b8562cba22
       scope: user:email
 
   jmx:
