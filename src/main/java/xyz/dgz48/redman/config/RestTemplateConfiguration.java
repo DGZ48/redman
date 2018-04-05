@@ -6,10 +6,14 @@ import org.springframework.web.client.RestTemplate;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Configuration for {@link RestTemplate}.
 =======
  * Configuration for {@link RestTemplate}
 >>>>>>> test for GitHub
+=======
+ * Configuration for {@link RestTemplate}.
+>>>>>>> checkstyle
  */
 @Configuration
 public class RestTemplateConfiguration {

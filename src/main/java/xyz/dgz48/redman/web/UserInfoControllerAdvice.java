@@ -35,11 +35,17 @@ public class UserInfoControllerAdvice {
 	@Autowired
 	private UserFactory userFactory;
 
+	/**
+	 * UserInfoExtractor for GitHub.
+	 */
 	@Autowired
-	GitHubUserInfoExtractor gitHubUserInfoExtractor;
+	private GitHubUserInfoExtractor gitHubUserInfoExtractor;
 
+	/**
+	 * UserInfoExtractor for Google.
+	 */
 	@Autowired
-	GoogleUserInfoExtractor googleUserInfoExtractor;
+	private GoogleUserInfoExtractor googleUserInfoExtractor;
 
 	/**
 	 * UserInfoExtractor for GitHub.
@@ -105,12 +111,17 @@ public class UserInfoControllerAdvice {
 >>>>>>> wip
 	}
 
-	private UserInfoExtractor getUserInfoExtractor (IdpType idpType) {
-		if(idpType == IdpType.GITHUB) {
+	/**
+	 * Get UserInfoExtractor.
+	 * @param idpType idpType
+	 * @return UserInfoExtractor
+	 */
+	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
+		if (idpType == IdpType.GITHUB) {
 			return gitHubUserInfoExtractor;
 		}
 
-		if(idpType == IdpType.GOOGLE) {
+		if (idpType == IdpType.GOOGLE) {
 			return googleUserInfoExtractor;
 		}
 

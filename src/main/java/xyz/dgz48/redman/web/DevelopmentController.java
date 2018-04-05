@@ -27,6 +27,6 @@ public class DevelopmentController {
 	public String viewStarter(final Model model) {
 		log.debug("View /starter.html");
 	 	return "starter";
-	} 
+	}
 
 }

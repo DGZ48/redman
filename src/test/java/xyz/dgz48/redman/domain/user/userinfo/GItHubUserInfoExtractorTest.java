@@ -51,7 +51,7 @@ public class GItHubUserInfoExtractorTest {
 	RestTemplate restTemplate;
 
 	@Autowired
-	OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
+	OAuth2AuthorizedClientService authorizedClientService;
 
 	/**
 	 * Init.
@@ -83,7 +83,7 @@ public class GItHubUserInfoExtractorTest {
 		ClientRegistration registration = CommonOAuth2Provider.GITHUB.getBuilder("github").clientId("id").clientSecret("secret").build();
 		OAuth2AuthorizedClient oAuth2AuthorizedClient = new OAuth2AuthorizedClient(registration, "testsub", new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER,"sampletoken" ,Instant.MIN, Instant.MAX));
 
-		oAuth2AuthorizedClientService.saveAuthorizedClient(oAuth2AuthorizedClient, token);
+		authorizedClientService.saveAuthorizedClient(oAuth2AuthorizedClient, token);
 
 		// exercise
 		String actual = sut.getEmail(token);
