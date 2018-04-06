@@ -118,8 +118,10 @@ public class UserInfoControllerAdvice {
 	 */
 	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
 		if (idpType == IdpType.GITHUB) {
+			log.info("★★★★★★★★★★");
 			return gitHubUserInfoExtractor;
 		} else {
+			log.info("★★★★★★★★★★");
 			return googleUserInfoExtractor;
 		}
 	}
