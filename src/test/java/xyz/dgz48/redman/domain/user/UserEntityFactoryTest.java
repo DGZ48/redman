@@ -21,7 +21,6 @@ public class UserEntityFactoryTest {
 	@Autowired
 	private UserEntityFactory sut;
 
-
 	/**
 	 * {@User} for test.
 	 */

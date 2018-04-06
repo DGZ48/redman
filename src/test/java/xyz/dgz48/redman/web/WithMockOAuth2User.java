@@ -4,6 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import org.springframework.security.test.context.support.WithSecurityContext;
+import xyz.dgz48.redman.domain.user.IdpType;
 
 /**
  * Annotation for test with OAuth2 Authentication.
@@ -18,5 +19,12 @@ public @interface WithMockOAuth2User {
 	 * @return username
 	 */
 	String username() default "testuser";
+
+	/**
+	 * authorizedClientRegistrationId.
+	 *
+	 * @return authorizedClientRegistrationId
+	 */
+	IdpType authorizedClientRegistrationId() default  IdpType.GOOGLE;
 
 }
