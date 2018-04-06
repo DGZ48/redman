@@ -108,8 +108,8 @@ public class LoginControllerTest {
 >>>>>>> jacoco
 
 		// setup
-		when(userService.findUserByIdpUserName("testsub", IdpType.GOOGLE))
-				.thenReturn(Optional.of(userFactory.createWithRandomId("testSub", "test@example.com", IdpType.GOOGLE)));
+		when(userService.findUserByIdpUserName("testsub", IdpType.GITHUB))
+				.thenReturn(Optional.of(userFactory.createWithRandomId("testSub", "test@example.com", IdpType.GITHUB)));
 
 		// exercise
 		mockMvc.perform(get("/")).andExpect(status().isOk());
