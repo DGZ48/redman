@@ -86,7 +86,7 @@ public class UserInfoControllerAdvice {
 	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
 		if (idpType == IdpType.GITHUB) {
 			return gitHubUserInfoExtractor;
-		}else {
+		} else {
 			return googleUserInfoExtractor;
 		}
 	}
