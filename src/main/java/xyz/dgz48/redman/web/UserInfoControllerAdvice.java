@@ -86,12 +86,8 @@ public class UserInfoControllerAdvice {
 	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
 		if (idpType == IdpType.GITHUB) {
 			return gitHubUserInfoExtractor;
-		}
-
-		if (idpType == IdpType.GOOGLE) {
+		}else {
 			return googleUserInfoExtractor;
 		}
-
-		throw new UnsupportedOperationException("null is not implemented idp.");
 	}
 }
