@@ -38,7 +38,7 @@ public class WithOAuth2SecurityContextFactory implements WithSecurityContextFact
         authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
         OAuth2User oidcUser = new DefaultOidcUser(authorities, new OidcIdToken("sampletoken", Instant.MIN, Instant.MAX, claims));
-        OAuth2AuthenticationToken token = new OAuth2AuthenticationToken(oidcUser, authorities, "google");
+        OAuth2AuthenticationToken token = new OAuth2AuthenticationToken(oidcUser, authorities, user.authorizedClientRegistrationId().getClientRegistrationId());
 
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(token);

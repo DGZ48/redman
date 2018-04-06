@@ -2,6 +2,7 @@ package xyz.dgz48.redman.domain.user;
 
 import java.util.Arrays;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * Idpの種別.
@@ -22,6 +23,7 @@ public enum IdpType {
 	/**
 	 * AuthorizedClientRegistrationId in OAuth2AuthenticationToken.
 	 */
+	@Getter
 	private String clientRegistrationId;
 
 	/**

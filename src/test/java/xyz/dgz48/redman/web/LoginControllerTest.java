@@ -80,8 +80,28 @@ public class LoginControllerTest {
 	 * @throws Exception exception
 	 */
 	@Test
-	@WithMockOAuth2User()
-	public void indexAfterLoginRegisterdUser() throws Exception { // NOPMD
+	@WithMockOAuth2User(authorizedClientRegistrationId = IdpType.GOOGLE)
+	public void indexAfterLoginRegisterdUserByGoogle() throws Exception { // NOPMD
+
+		// setup
+		when(userService.findUserByIdpUserName("testsub", IdpType.GOOGLE))
+				.thenReturn(Optional.of(userFactory.createWithRandomId("testSub", "test@example.com", IdpType.GOOGLE)));
+
+		// exercise
+		mockMvc.perform(get("/")).andExpect(status().isOk());
+
+		// verify
+		verify(userService, times(0)).saveUser(any());
+	}
+
+	/**
+	 * Test for index page after login(registered user).
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	@WithMockOAuth2User(authorizedClientRegistrationId = IdpType.GITHUB)
+	public void indexAfterLoginRegisterdUserByGitHub() throws Exception { // NOPMD
 
 		// setup
 		when(userService.findUserByIdpUserName("testsub", IdpType.GOOGLE))
