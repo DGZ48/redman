@@ -1,4 +1,4 @@
-package xyz.dgz48.redman.domain.user.resource;
+package xyz.dgz48.redman.domain.resource;
 
 import lombok.Value;
 
