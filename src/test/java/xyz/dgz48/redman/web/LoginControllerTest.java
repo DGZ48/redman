@@ -27,6 +27,7 @@ import xyz.dgz48.redman.domain.user.UserService;
 @AutoConfigureMockMvc
 public class LoginControllerTest {
 
+	
 	/**
 	 * Test target.
 	 */
@@ -104,8 +105,8 @@ public class LoginControllerTest {
 	public void indexAfterLoginRegisterdUserByGitHub() throws Exception { // NOPMD
 
 		// setup
-		when(userService.findUserByIdpUserName("testsub", IdpType.GOOGLE))
-				.thenReturn(Optional.of(userFactory.createWithRandomId("testSub", "test@example.com", IdpType.GOOGLE)));
+		when(userService.findUserByIdpUserName("testsub", IdpType.GITHUB))
+				.thenReturn(Optional.of(userFactory.createWithRandomId("testSub", "test@example.com", IdpType.GITHUB)));
 
 		// exercise
 		mockMvc.perform(get("/")).andExpect(status().isOk());
