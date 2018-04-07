@@ -48,6 +48,18 @@ public class UserInfoControllerAdvice {
 	private GoogleUserInfoExtractor googleUserInfoExtractor;
 
 	/**
+	 * UserInfoExtractor for GitHub.
+	 */
+	@Autowired
+	private GitHubUserInfoExtractor gitHubUserInfoExtractor;
+
+	/**
+	 * UserInfoExtractor for Google.
+	 */
+	@Autowired
+	private GoogleUserInfoExtractor googleUserInfoExtractor;
+
+	/**
 	 * Create {@link UserInfo} and set to model.
 	 * @param model model
 	 */
@@ -75,8 +87,28 @@ public class UserInfoControllerAdvice {
 		UserInfoExtractor userInfoExtractor = getUserInfoExtractor(idpType);
 		User user = userByIdpUserName.orElseGet(() -> userService.saveUser(userFactory.createWithRandomId(authentication.getName(),
 				userInfoExtractor.getEmail(token), idpType)));
+<<<<<<< HEAD
 
 		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
+	}
+
+	/**
+	 * Get UserInfoExtractor.
+	 * @param idpType idpType
+	 * @return UserInfoExtractor
+	 */
+	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
+		if (idpType == IdpType.GITHUB) {
+			log.info("★★★★★★★★★★");
+			return gitHubUserInfoExtractor;
+		} else {
+			log.info("★★★★★★★★★★");
+			return googleUserInfoExtractor;
+		}
+=======
+
+		model.addAttribute("userInfo", new UserInfo(user.getUserId(), user.getEmail(), userInfoExtractor.getPictureUrl(token)));
+>>>>>>> wip
 	}
 
 	/**
