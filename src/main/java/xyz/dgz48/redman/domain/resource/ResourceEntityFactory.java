@@ -1,5 +1,8 @@
 package xyz.dgz48.redman.domain.resource;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,12 +11,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class ResourceEntityFactory {
 
-	public ResourceEntity create(Resource resource) {
+	/**
+	 * ObjectMapper.
+	 */
+	@Autowired
+	ObjectMapper mapper;
+
+	public ResourceEntity create(Resource resource) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
 		return new ResourceEntity(resource.getResourceId(),
+				resource.getUserId(),
 				resource.getName(),
 				resource.getHttpMethod(),
 				resource.getUrl(),
-				resource.getHeaders(),
+				mapper.writeValueAsString(resource.getHeaders()),
 				resource.getBody());
 	}
 

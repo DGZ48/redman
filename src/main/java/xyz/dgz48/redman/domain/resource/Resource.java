@@ -15,6 +15,11 @@ public class Resource {
 	private String resourceId;
 
 	/**
+	 * Resource owner identifier.
+	 */
+	private String userId;
+
+	/**
 	 * Resource name.
 	 */
 	private String name;

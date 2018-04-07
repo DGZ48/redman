@@ -1,44 +1,60 @@
 package xyz.dgz48.redman.domain.resource;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.*;
 
-import java.util.Set;
+import javax.persistence.*;
 
 /**
  * Definition of connection for one Http access.
  */
+@Entity
 @AllArgsConstructor
-@Value
+@Getter
+@Table(name = "resource")
+@EqualsAndHashCode
 public class ResourceEntity {
 
 	/**
 	 * Identifier.
 	 */
+	@Id
+	@Column(name = "resource_id")
 	private String resourceId;
+
+	/**
+	 * Resource owner identifier.
+	 */
+	@Column(name = "user_id")
+	private String userId;
 
 	/**
 	 * Resource name.
 	 */
+	@Column(name = "name")
 	private String name;
 
 	/**
 	 * Http method.
 	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "http_method")
 	private HttpMethod httpMethod;
 
 	/**
 	 * URL.
 	 */
+	@Column(name = "url")
 	private String url;
 
 	/**
-	 * Http headers;
+	 * Http headers(Json array).
 	 */
-	private Set<HttpHeader> headers;
+	@Column(name = "headers")
+	private String headers;
 
 	/**
 	 * Http body.
 	 */
+	@Column(name = "body")
 	private String body;
 }
