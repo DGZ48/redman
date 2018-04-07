@@ -29,4 +29,52 @@ public class DevelopmentController {
 		return "starter";
 	}
 
+	/**
+	 * path:/example/bootstrap.html.
+	 *
+	 * @param model モデル
+	 * @return テンプレートパス
+	 */
+	@GetMapping("/example/bootstrap.html")
+	public String viewExampleBootsrap(final Model model) {
+		log.debug("View /example/bootstrap.html");
+		return "example/bootstrap";
+	}
+
+	/**
+	 * path:/example/bootstrap-honoka.html.
+	 *
+	 * @param model モデル
+	 * @return テンプレートパス
+	 */
+	@GetMapping("/example/bootstrap-honoka.html")
+	public String viewExampleBootsrapHonoka(final Model model) {
+		log.debug("View /example/bootstrap-honoka.html");
+		return "example/bootstrap-honoka";
+	}
+
+	/**
+	 * path:/example/bootstrap-honoka2.html.
+	 *
+	 * @param model モデル
+	 * @return テンプレートパス
+	 */
+	@GetMapping("/example/bootstrap-honoka2.html")
+	public String viewExampleBootsrapHonoka2(final Model model) {
+		log.debug("View /example/bootstrap-honoka2.html");
+		return "example/bootstrap-honoka2";
+	}
+
+	/**
+	 * path:/example/bootstrap-googlewebfont.html.
+	 *
+	 * @param model モデル
+	 * @return テンプレートパス
+	 */
+	@GetMapping("/example/bootstrap-googlewebfont.html")
+	public String viewExampleBootsrapGoogleWebFont(final Model model) {
+		log.debug("View /example/bootstrap-googlewebfont.html");
+		return "example/bootstrap-googlewebfont";
+	}
+
 }

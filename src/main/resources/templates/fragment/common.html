@@ -130,10 +130,21 @@ Make sure you apply the skin class to the body tag so the changes take effect.
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">MENU</li>
 					<!--/* Optionally, you can add icons to the links */-->
-					<li><a href="#" th:href="@{/index.html}"><i class="fa fa-link"></i> <span>ダッシュボード</span></a></li>
+					<li class="active"><a href="#" th:href="@{/index.html}"><i class="fa fa-link"></i> <span>ダッシュボード</span></a></li>
 					<li><a href="#" th:href="@{/resource/list.html}"><i class="fa fa-link"></i> <span>リソース一覧</span></a></li>
 					<li><a href="#" th:href="@{/activity/list.html}"><i class="fa fa-link"></i> <span>アクティビティ一覧</span></a></li>
-					<li class="active"><a href="#" th:href="@{/starter.html}"><i class="fa fa-link"></i> <span>starter.html</span></a></li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-link"></i> <span>開発者向け</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="#" th:href="@{/starter.html}">starter.html</a></li>
+							<li><a href="#" th:href="@{/example/bootstrap.html}">bootstrap</a></li>
+							<li><a href="#" th:href="@{/example/bootstrap-honoka.html}">honoka(游ゴシック有効)</a></li>
+							<li><a href="#" th:href="@{/example/bootstrap-honoka2.html}">honoka(游ゴシック無効)</a></li>
+							<li><a href="#" th:href="@{/example/bootstrap-googlewebfont.html}">GoogleWebFont</a></li>
+						</ul>
+					</li>
 				</ul>
 				<!--/* /.sidebar-menu */-->
 			</section>
