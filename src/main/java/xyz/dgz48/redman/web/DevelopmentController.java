@@ -26,7 +26,7 @@ public class DevelopmentController {
 	@GetMapping("/starter.html")
 	public String viewStarter(final Model model) {
 		log.debug("View /starter.html");
-		return "starter";
+	 	return "starter";
 	}
 
 }
