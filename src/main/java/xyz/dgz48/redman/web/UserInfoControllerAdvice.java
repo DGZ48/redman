@@ -64,7 +64,6 @@ public class UserInfoControllerAdvice {
 		log.debug("Get authentication.");
 		if (!(authentication instanceof OAuth2AuthenticationToken)) {
 			log.debug("Authentication is not Outh2AuthenticationToken.");
-			log.info("★★★★★★★★★★");
 		 	return;
 		}
 
@@ -86,10 +85,8 @@ public class UserInfoControllerAdvice {
 	 */
 	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
 		if (idpType == IdpType.GITHUB) {
-			log.info("★★★★★★★★★★");
 			return gitHubUserInfoExtractor;
 		} else {
-			log.info("★★★★★★★★★★");
 			return googleUserInfoExtractor;
 		}
 	}
