@@ -39,4 +39,48 @@ public class DevelopmentControllerIntegrationTest {
 		mockMvc.perform(get("/starter.html")).andExpect(status().isOk());
 	}
 
+	/**
+	 * Test for /example/bootstrap.html.
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	@WithMockOAuth2User()
+	public void testViewExampleBootsrap() throws Exception { // NOPMD
+		mockMvc.perform(get("/example/bootstrap.html")).andExpect(status().isOk());
+	}
+
+	/**
+	 * Test for /example/bootstrap-honoka.html.
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	@WithMockOAuth2User()
+	public void testViewExampleBootsrapHonoka() throws Exception { // NOPMD
+		mockMvc.perform(get("/example/bootstrap-honoka.html")).andExpect(status().isOk());
+	}
+
+	/**
+	 * Test for /example/bootstrap-honoka2.html.
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	@WithMockOAuth2User()
+	public void testViewExampleBootsrapHonoka2() throws Exception { // NOPMD
+		mockMvc.perform(get("/example/bootstrap-honoka2.html")).andExpect(status().isOk());
+	}
+
+	/**
+	 * Test for /example/bootstrap-googlewebfont.html.
+	 *
+	 * @throws Exception exception
+	 */
+	@Test
+	@WithMockOAuth2User()
+	public void testExampleBootsrapGoogleWebFont() throws Exception { // NOPMD
+		mockMvc.perform(get("/example/bootstrap-googlewebfont.html")).andExpect(status().isOk());
+	}
+
 }
