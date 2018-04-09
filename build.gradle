@@ -5,7 +5,7 @@ buildscript {
 		implementationVersion = '1.0.0.SNAPSHOT'
 		defaultEncoding  = 'UTF-8'
 		compatibility    = 1.8
-		springBootVersion = '2.0.0.RELEASE'
+		springBootVersion = '2.0.1.RELEASE'
 	}
 	repositories {
 		mavenCentral()
