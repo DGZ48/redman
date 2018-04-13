@@ -20,6 +20,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import xyz.dgz48.redman.domain.auth.AccessPriviledgeVerifier;
+import xyz.dgz48.redman.domain.user.UserFixture;
+import xyz.dgz48.redman.domain.user.UserService;
 
 
 /**
@@ -54,6 +57,18 @@ public class ResourceServiceTest {
 	private ResourceRepository resourceRepository;
 
 	/**
+	 * Owner verifier.
+	 */
+	@Mock
+	private AccessPriviledgeVerifier accessPriviledgeVerifier; // NOPMD
+
+	/**
+	 * User service.
+	 */
+	@Mock
+	private UserService userService;
+
+	/**
 	 * user id.
 	 */
 	private static final String USER_ID = "user_id";
@@ -72,6 +87,7 @@ public class ResourceServiceTest {
 		// set up
 		ResourceEntity resourceEntity = ResourceEntityFixture.create(USER_ID, USER_NAME);
 		when(resourceRepository.save(ResourceEntityFixture.create(USER_ID, USER_NAME))).thenReturn(resourceEntity);
+		when(userService.findLoginUser()).thenReturn(UserFixture.create());
 
 		// exercise
 		Resource actual = sut.saveResource(this.resourceFactory.create(resourceEntity));
@@ -92,6 +108,7 @@ public class ResourceServiceTest {
 		List<ResourceEntity> resourceEntityList = new ArrayList<>();
 		resourceEntityList.add(ResourceEntityFixture.create(USER_ID, "resource_id"));
 		when(resourceRepository.findByUserId(USER_ID, PageRequest.of(1, 1))).thenReturn(new PageImpl(resourceEntityList));
+		when(userService.findLoginUser()).thenReturn(UserFixture.create());
 
 		// exercise
 		sut.findByUserId(USER_ID, PageRequest.of(1, 1));
@@ -109,6 +126,7 @@ public class ResourceServiceTest {
 		// setup
 		ResourceEntity resourceEntity = ResourceEntityFixture.create(USER_ID, USER_NAME);
 		when(resourceRepository.findById(resourceEntity.getResourceId())).thenReturn(Optional.of(resourceEntity));
+		when(userService.findLoginUser()).thenReturn(UserFixture.create());
 
 		// exercise
 		Optional<Resource> actual = sut.findByResourceId(resourceEntity.getResourceId());
@@ -140,6 +158,7 @@ public class ResourceServiceTest {
 		// setup
 		ResourceEntity resourceEntity = ResourceEntityFixture.create(USER_ID, USER_NAME);
 		when(resourceRepository.findById(anyString())).thenReturn(Optional.of(resourceEntity));
+		when(userService.findLoginUser()).thenReturn(UserFixture.create());
 
 		// exercise
 		Optional<Resource> actual = sut.deleteResource("noting");

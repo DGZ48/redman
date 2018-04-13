@@ -53,12 +53,10 @@ public class UserInfoControllerAdvice {
 	 */
 	@ModelAttribute
 	public void userInfoAttributes(final Model model) {
-		SecurityContextHolder.getContext();
 		Authentication authentication = SecurityContextHolder.getContext()
 				.getAuthentication();
 
 		log.debug("Invoke UserInfoControllerAdvice.");
-
 
 		// when implement login by redman as idp, implement for other type of Authentication.
 		log.debug("Get authentication.");

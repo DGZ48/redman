@@ -2,6 +2,7 @@ package xyz.dgz48.redman.domain.user.userinfo;
 
 import java.io.Serializable;
 import lombok.Value;
+import xyz.dgz48.redman.domain.user.Ownable;
 
 
 /**
@@ -12,7 +13,7 @@ import lombok.Value;
  *
  */
 @Value
-public class UserInfo implements Serializable {
+public class UserInfo implements Serializable, Ownable {
 
 	/**
 	 * SuppressWarnings.
