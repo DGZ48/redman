@@ -53,18 +53,15 @@ public class UserInfoControllerAdvice {
 	 */
 	@ModelAttribute
 	public void userInfoAttributes(final Model model) {
-		SecurityContextHolder.getContext();
 		Authentication authentication = SecurityContextHolder.getContext()
 				.getAuthentication();
 
 		log.debug("Invoke UserInfoControllerAdvice.");
 
-
 		// when implement login by redman as idp, implement for other type of Authentication.
 		log.debug("Get authentication.");
 		if (!(authentication instanceof OAuth2AuthenticationToken)) {
 			log.debug("Authentication is not Outh2AuthenticationToken.");
-			log.info("★★★★★★★★★★");
 		 	return;
 		}
 
@@ -86,10 +83,8 @@ public class UserInfoControllerAdvice {
 	 */
 	private UserInfoExtractor getUserInfoExtractor(final IdpType idpType) {
 		if (idpType == IdpType.GITHUB) {
-			log.info("★★★★★★★★★★");
 			return gitHubUserInfoExtractor;
 		} else {
-			log.info("★★★★★★★★★★");
 			return googleUserInfoExtractor;
 		}
 	}
