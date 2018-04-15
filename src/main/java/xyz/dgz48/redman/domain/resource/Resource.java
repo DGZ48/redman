@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Value;
+import xyz.dgz48.redman.domain.user.Ownable;
 
 /**
  * Definition of connection for one Http access.
  */
 @Value
 @SuppressFBWarnings("RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE")
-public class Resource {
+public class Resource implements Ownable {
 
 	/**
 	 * Identifier.

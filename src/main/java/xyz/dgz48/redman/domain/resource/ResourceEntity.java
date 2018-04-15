@@ -2,6 +2,7 @@ package xyz.dgz48.redman.domain.resource;
 
 import javax.persistence.*;
 import lombok.*;
+import xyz.dgz48.redman.domain.user.Ownable;
 
 /**
  * Definition of connection for one Http access.
@@ -12,7 +13,7 @@ import lombok.*;
 @Getter
 @Table(name = "resource")
 @EqualsAndHashCode
-public class ResourceEntity {
+public class ResourceEntity implements Ownable {
 
 	/**
 	 * Identifier.

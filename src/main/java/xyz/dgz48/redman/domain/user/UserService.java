@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,6 +57,21 @@ public class UserService {
 	public User saveUser(final User user) {
 		log.info("Save user:{}", user.getIdpUserName(), user.getIdpUserName());
 		return userFactory.create(userRepository.save(userEntityFactory.create(user)));
+	}
+
+	/**
+	 * Find login user(by SecurityContext).
+	 * @return login user
+	 */
+	public User findLoginUser() {
+		Authentication authentication = SecurityContextHolder.getContext()
+				.getAuthentication();
+
+		OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
+		IdpType idpType = IdpType.findByClientRegistrationId(token.getAuthorizedClientRegistrationId());
+
+		Optional<User> userByIdpUserName = this.findUserByIdpUserName(token.getName(), idpType);
+		return userByIdpUserName.get();
 	}
 
 }

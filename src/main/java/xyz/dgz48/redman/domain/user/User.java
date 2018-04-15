@@ -6,7 +6,7 @@ import lombok.Value;
  * User Dommain Object.
  */
 @Value
-public class User {
+public class User implements Ownable {
 
 	/**
 	 * このアプリケーション内に置けるUserの識別子.別のリソースとの外部参照のキーはこちらを使う.
