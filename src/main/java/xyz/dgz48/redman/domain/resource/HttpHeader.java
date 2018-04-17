@@ -6,7 +6,7 @@ import lombok.*;
 /**
  * Http Header.
  */
-@Value
+@Data
 public class HttpHeader {
 
 	/**

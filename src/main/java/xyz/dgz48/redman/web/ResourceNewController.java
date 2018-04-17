@@ -1,11 +1,16 @@
 package xyz.dgz48.redman.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import xyz.dgz48.redman.domain.resource.ResourceService;
+import xyz.dgz48.redman.web.resource.ResourceRequest;
 
 /**
  * {@link Controller} for Resource create flow.
@@ -17,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/resource/new")
 @Slf4j
 public class ResourceNewController {
+
+	@Autowired
+	ResourceService resourceService;
 
 	/**
 	 * リソース登録入力画面を表示する.
@@ -37,8 +45,9 @@ public class ResourceNewController {
 	 * @return テンプレートパス
 	 */
 	@PostMapping(path = "/input.html")
-	public String validate(final Model model) {
+	public String validate(final ResourceRequest request, final Model model) throws JsonProcessingException {
 		log.debug("TODO validate"); // TODO validate
+		log.debug(new ObjectMapper().writeValueAsString(request));
 		return "redirect:/resource/new/confirm.html";
 	}
 

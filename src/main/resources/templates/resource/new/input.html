@@ -41,13 +41,13 @@
 							</div>
 							<div class="form-group">
 								<label for="name">名称</label>
-								<input type="text" class="form-control input-lg" id="name" name="lastName" placeholder="わかりやすい名称を入力してください" />
+								<input type="text" class="form-control input-lg" id="name" name="name" placeholder="わかりやすい名称を入力してください" />
 							</div>
 							<div class="form-group">
 								<div class="row">
 									<div class="col-xs-2">
-										<label for="method">HTTPメソッド</label>
-										<select class="form-control input-lg" id="method" name="method">
+										<label for="httpMethod">HTTPメソッド</label>
+										<select class="form-control input-lg" id="httpMethod" name="httpMethod">
 											<option>GET</option>
 											<option>POST</option>
 											<option>PUT</option>
@@ -64,10 +64,10 @@
 								<label for="header">HTTPヘッダー</label>
 								<div class="row">
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].key" name="header[0].key" placeholder="Authorization">
+										<input type="text" class="form-control input-lg" id="headers[0].name" name="headers[0].name" placeholder="Authorization">
 									</div>
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].value" name="header[0].value" placeholder="Bearer XXXXXXXXXX">
+										<input type="text" class="form-control input-lg" id="headers[0].value" name="headers[0].value" placeholder="Bearer XXXXXXXXXX">
 									</div>
 									<div class="col-xs-2">
 										<button type="button" name="delete" id="delete" class="btn btn-default btn-lg">削除</button>
@@ -75,10 +75,10 @@
 								</div>
 								<div class="row mgt10">
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].key" name="header[0].key" placeholder="Conetnt-Type">
+										<input type="text" class="form-control input-lg" id="headers[1].name" name="headers[1].name" placeholder="Conetnt-Type">
 									</div>
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].value" name="header[0].value" placeholder="application/x-www-form-urlencoded">
+										<input type="text" class="form-control input-lg" id="headers[1].value" name="headers[1].value" placeholder="application/x-www-form-urlencoded">
 									</div>
 									<div class="col-xs-2">
 										<button type="button" name="delete" id="delete" class="btn btn-default btn-lg">削除</button>
@@ -86,10 +86,10 @@
 								</div>
 								<div class="row mgt10">
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].key" name="header[0].key" placeholder="">
+										<input type="text" class="form-control input-lg" id="headers[2].name" name="headers[2].name" placeholder="">
 									</div>
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].value" name="header[0].value" placeholder="">
+										<input type="text" class="form-control input-lg" id="headers[2].value" name="headers[2].value" placeholder="">
 									</div>
 									<div class="col-xs-2">
 										<button type="button" name="delete" id="delete" class="btn btn-default btn-lg">削除</button>
@@ -97,10 +97,10 @@
 								</div>
 								<div class="row mgt10">
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].key" name="header[0].key" placeholder="">
+										<input type="text" class="form-control input-lg" id="headers[3].name" name="headers[3].name" placeholder="">
 									</div>
 									<div class="col-xs-5">
-										<input type="text" class="form-control input-lg" id="header[0].value" name="header[0].value" placeholder="">
+										<input type="text" class="form-control input-lg" id="headers[3].value" name="headers[3].value" placeholder="">
 									</div>
 									<div class="col-xs-2">
 										<button type="button" name="delete" id="delete" class="btn btn-default btn-lg">削除</button>
