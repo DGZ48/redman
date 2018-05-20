@@ -72,6 +72,7 @@
 
 					<div class="box-footer clearfix">
 						<form method="post" action="complete.html" th:action="@{/resource/new/confirm.html}">
+							<input type="hidden" name="fid" value="" th:value="${fid}" th:if="${fid}" />
 							<a href="input.html" th:href="@{/resource/new/input.html}" class="btn btn-default btn-lg">戻る</a>
 							<button type="submit" name="submit" class="btn btn-primary btn-lg">登録する</button>
 						</form>

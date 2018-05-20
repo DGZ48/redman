@@ -34,6 +34,7 @@
 					</div>
 
 					<form method="post" action="confirm.html" th:action="@{/resource/new/input.html}">
+						<input type="hidden" name="fid" value="" th:value="${fid}" th:if="${fid}" />
 						<div class="box-body">
 							<div class="form-group">
 								<label for="id">ID</label>
